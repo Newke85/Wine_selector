@@ -8,3 +8,7 @@ wines = [['merlot', 'De Grendel', 'Durbanville', '2017' ],
          ['chardonny', 'De Grendel', 'Durbanville', '2020'],
          ['merlot', 'Flag Stone', 'Somerset West', '2016'],
          ['chenin blanc', 'Beyerskloof', 'Stellenbosch', '2019']]
+
+regions = ['Durbanville', 'Stellenbosch', 'Somerset West']
+
+
