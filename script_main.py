@@ -69,23 +69,31 @@ def choose_variety():
         if  str(get_list_head.get_value()).startswith(user_selection):
             matching_wine.append(get_list_head.get_value())
         get_list_head = get_list_head.get_next_node()
-    selected_wine = matching_wine[0]
 
-    # Print a list of wine that matches user input
-    print(f"We have the following {selected_wine} availible:")
-    wine_list_head = wine_details.get_head_node()
-    while wine_list_head.get_next_node() is not None:
-        sublist_head = wine_list_head.get_value().get_head_node()
-        if sublist_head.get_value()[0] == selected_wine:
-            while sublist_head.get_next_node() is not None:
-                print("________Summary________")
-                print(f"Winery:   {sublist_head.get_value()[1]}")
-                print(f"Region:   {sublist_head.get_value()[2]}")
-                print(f"Vintage:  {sublist_head.get_value()[3]}")
-                print("_______________________\n")
-                sublist_head = sublist_head.get_next_node()
-        wine_list_head = wine_list_head.get_next_node()
-    start_again()
+        if len(matching_wine) == 1:
+            selected_wine = matching_wine[0]
+
+            # Print a list of wine that matches user input
+            print(f"We have the following {selected_wine} availible:")
+            wine_list_head = wine_details.get_head_node()
+            while wine_list_head.get_next_node() is not None:
+                sublist_head = wine_list_head.get_value().get_head_node()
+                if sublist_head.get_value()[0] == selected_wine:
+                    while sublist_head.get_next_node() is not None:
+                        print("________Summary________")
+                        print(f"Winery:   {sublist_head.get_value()[1]}")
+                        print(f"Region:   {sublist_head.get_value()[2]}")
+                        print(f"Vintage:  {sublist_head.get_value()[3]}")
+                        print("_______________________\n")
+                        sublist_head = sublist_head.get_next_node()
+                wine_list_head = wine_list_head.get_next_node()
+            start_again()
+
+    if len(matching_wine) == 0:
+        print('Unfortunately we don\'t have your selected variety availible')
+        start_again()
+        
+
 
 # Code if user want to search by region
 def choose_region():
@@ -100,23 +108,29 @@ def choose_region():
         if  str(get_list_head.get_value()).startswith(user_selection):
             selected_wine_region.append(get_list_head.get_value())
         get_list_head = get_list_head.get_next_node()
-    selected_area = selected_wine_region[0]
 
-    # Print a list of wine that matches user input
-    print(f"We have wine from the following wineries in {selected_area}:")
-    wine_list_head = region_details.get_head_node()
-    while wine_list_head.get_next_node() is not None:
-        sublist_head = wine_list_head.get_value().get_head_node()
-        if sublist_head.get_value()[2] == selected_area:
-            while sublist_head.get_next_node() is not None:
-                print("________Summary________")
-                print(f"Winery:   {sublist_head.get_value()[1]}")
-                print(f"Variety:  {sublist_head.get_value()[0]}")
-                print(f"Vintage:  {sublist_head.get_value()[3]}")
-                print("_______________________\n")
-                sublist_head = sublist_head.get_next_node()
-        wine_list_head = wine_list_head.get_next_node()
-    start_again()
+        if len(selected_wine_region) == 1:
+            selected_area = selected_wine_region[0]
+
+            # Print a list of wine that matches user input
+            print(f"We have wine from the following wineries in {selected_area}:")
+            wine_list_head = region_details.get_head_node()
+            while wine_list_head.get_next_node() is not None:
+                sublist_head = wine_list_head.get_value().get_head_node()
+                if sublist_head.get_value()[2] == selected_area:
+                    while sublist_head.get_next_node() is not None:
+                        print("________Summary________")
+                        print(f"Winery:   {sublist_head.get_value()[1]}")
+                        print(f"Variety:  {sublist_head.get_value()[0]}")
+                        print(f"Vintage:  {sublist_head.get_value()[3]}")
+                        print("_______________________\n")
+                        sublist_head = sublist_head.get_next_node()
+                wine_list_head = wine_list_head.get_next_node()
+            start_again()
+    if len(selected_wine_region) == 0:
+        print('Unfortunately we don\'t have wine from the selected region')
+        start_again()            
+ 
 
 
 # Code to aske the user if they would like to search again
